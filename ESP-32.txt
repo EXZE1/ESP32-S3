@@ -1,0 +1,44 @@
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  if(Serial.available())
+  {
+    int verii = Serial.read();
+    int veri = Serial.read();
+    delay(500);
+    Serial.println("led rengi red=r blue=b green=g");
+    Serial.println(veri);
+    if(veri == 114){
+      neopixelWrite(RGB_BUILTIN,RGB_BRIGHTNESS,0,0); // Red
+    }
+    else if(veri == 98){
+      neopixelWrite(RGB_BUILTIN,0,0,RGB_BRIGHTNESS); //blue
+      Serial.println("mavi ile hangi rengi brleþtirmek istersiniz red = r green = g");
+      Serial.println(verii);
+      if(verii == 114){
+        
+      }
+    }
+    else if(veri == 103){
+      neopixelWrite(RGB_BUILTIN,0,RGB_BRIGHTNESS,0); //green
+      Serial.println("yeþil ile hangi rengi brleþtirmek istersiniz red = r blue= b");
+      Serial.println(verii);
+      if(verii == 114 ){
+        neopixelWrite(RGB_BUILTIN,RGB_BRIGHTNESS,RGB_BRIGHTNESS,0);
+
+      }
+      else(verii == 98){
+        neopixelWrite(RGB_BUILTIN,0,RGB_BRIGHTNESS,RGB_BRIGHTNESS);
+
+      }
+    }
+    else{
+      neopixelWrite(RGB_BUILTIN,0,0,0); // Off / black
+    }
+  }
+  
+}
